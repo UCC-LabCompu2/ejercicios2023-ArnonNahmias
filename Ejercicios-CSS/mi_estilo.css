@@ -1,7 +1,7 @@
 body{
     text-align: center;
     font-family: 'Sedgwick Ave Display', monospace;
-    background: linear-gradient(to right, #7a8aac, #faf5ff);
+    background: linear-gradient(to right, #7F7A82FF, #ffffff);
 }
 div{
     border: 2px dashed #1f1bff;
