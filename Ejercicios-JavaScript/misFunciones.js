@@ -6,6 +6,9 @@
  * @return
  */
 function conversorUnidades(id, valor) {
+    if(valor.includes(",")){
+        valor = valor.replace(",", ".");
+    }
     if (isNaN(valor)) {
         document.lasUnidades.unid_metro.value = "";
         document.lasUnidades.unid_yarda.value = "";
@@ -13,21 +16,21 @@ function conversorUnidades(id, valor) {
         document.lasUnidades.unid_pulgada.value = "";
         alert("El valor ingresado es incorrecto");
     } else if (id == "metro") {
-        document.lasUnidades.unid_yarda.value = 1.09361 * valor;
-        document.lasUnidades.unid_pie.value = 3.28084 * valor;
-        document.lasUnidades.unid_pulgada.value = 39.3701 * valor;
+        document.lasUnidades.unid_yarda.value = Math.round(1.09361 * valor * 100)/100;
+        document.lasUnidades.unid_pie.value = Math.round(3.28084 * valor * 100)/100;
+        document.lasUnidades.unid_pulgada.value = Math.round(39.3701 * valor * 100)/100;
     } else if (id == "pulgada") {
-        document.lasUnidades.unid_metro.value = valor * 0.0254;
-        document.lasUnidades.unid_pie.value = valor * 0.08333;
-        document.lasUnidades.unid_yarda.value = valor * 0.027778;
+        document.lasUnidades.unid_metro.value = Math.round(valor * 0.0254 * 100)/100;
+        document.lasUnidades.unid_pie.value = Math.round(valor * 0.08333 * 100)/100;
+        document.lasUnidades.unid_yarda.value = Math.round(valor * 0.027778 * 100)/100;
     } else if (id == "pie") {
-        document.lasUnidades.unid_metro.value = valor * 0.3048;
-        document.lasUnidades.unid_pulgada.value = valor * 12;
-        document.lasUnidades.unid_yarda.value = valor * 0.333333;
+        document.lasUnidades.unid_metro.value = Math.round(valor * 0.3048)/100;
+        document.lasUnidades.unid_pulgada.value = Math.round(valor * 12 * 100)/100;
+        document.lasUnidades.unid_yarda.value = Math.round(valor * 0.333333 * 100)/100;
     } else if (id == "yarda") {
-        document.lasUnidades.unid_metro.value = valor * 0.9144;
-        document.lasUnidades.unid_pulgada.value = valor * 36;
-        document.lasUnidades.unid_pie.value = valor * 3;
+        document.lasUnidades.unid_metro.value = Math.round(valor * 0.9144 * 100)/100;
+        document.lasUnidades.unid_pulgada.value =  Math.round(valor * 36 * 100)/100;
+        document.lasUnidades.unid_pie.value =  Math.round(valor * 3 * 100)/100;
     }
 }
 
