@@ -47,7 +47,7 @@ function convertirGR(id) {
 }
 
 function mostrar_ocultar(valorMo){
-    if(valorMo== "val_mostar"){
+    if(valorMo== "val_mostrar"){
         document.getElementById("divMo").style.display = 'block';
     }else if(valorMo=="val_ocultar"){
         document.getElementById("divMo").style.display = 'none';
