@@ -106,3 +106,20 @@ function cargarRresultado() {
 
     document.getElementById("dist").value = can + " " + un;
 }
+
+function guardarLocalStorage(){
+    let distancia, unidad;
+    distancia = document.getElementById('distancia').value;
+    unidad = document.getElementsByName('distancia')[0].value;
+    localStorage.setItem("distancia_local_storage", distancia);
+    localStorage.setItem("unidades_local_storage", unidades);
+    window.open('2_wen.html');
+}
+
+function cargarLocalStorage() {
+    let cantidad, unidad;
+    cant = localStorage.getItem("distancia_local_storage");
+    un = localStorage.getItem("unidades_local_storage");
+
+    document.getElementById("dist").value = cant + " " + un;
+}
