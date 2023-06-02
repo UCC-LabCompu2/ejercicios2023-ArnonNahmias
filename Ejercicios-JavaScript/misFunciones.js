@@ -107,7 +107,7 @@ function cargarRresultado() {
     document.getElementById("dist").value = can + " " + un;
 }
 
-function guardarLocalStorage(){
+function guardarLocalStorage() {
     let distancia, unidad;
     distancia = document.getElementById('distancia').value;
     unidad = document.getElementsByName('distancia')[0].value;
@@ -131,11 +131,91 @@ function dibujarCirCuad() {
     var yMax = canvas.height;
     var margen = 5;
     ctx.fillStyle = "#333899";
-    ctx.fillRect(0+margen,yMax-40-margen, 40, 40);
+    ctx.fillRect(0 + margen, yMax - 40 - margen, 40, 40);
 
-    ctx.arc(xMax/2, yMax/2, 20, 0, 2*Math.PI);
+    ctx.arc(xMax / 2, yMax / 2, 20, 0, 2 * Math.PI);
     ctx.stroke();
     ctx.fillStyle = "#a17cad";
     ctx.fill();
 
 }
+
+function dibujarCuadriculado() {
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    var anchoMax = canvas.width;
+    var alturaMax = canvas.height;
+    //dibujar lineas horizontales
+    for (var i = 0; i < alturaMax;) {
+        ctx.beginPath();
+        ctx.moveTo(0, i);
+        ctx.lineTo(anchoMax, i);
+        ctx.strokeStyle = "#000000";
+        ctx.stroke();
+        i = i + 20;
+    }
+    ctx.closePath();
+    //dibujar lineas varticales
+    for (var i = 0; i < anchoMax;) {
+        ctx.moveTo(i, 0);
+        ctx.lineTo(i, alturaMax);
+        ctx.strokeStyle = "#000000";
+        ctx.stroke();
+        i = i + 20;
+    }
+    ctx.closePath();
+
+    //eje x
+    ctx.beginPath();
+    ctx.moveTo(0, alturaMax / 2);
+    ctx.lineTo(anchoMax, alturaMax / 2);
+    ctx.strokeStyle = "#0226ff";
+    ctx.stroke();
+    ctx.closePath();
+
+    //eje y
+    ctx.beginPath();
+    ctx.moveTo(anchoMax / 2, 0);
+    ctx.lineTo(anchoMax / 2, alturaMax);
+    ctx.strokeStyle = "#0226ff";
+    ctx.stroke();
+    ctx.closePath();
+}
+
+
+/*
+function dibujo2() {
+    var canvas = document.getElementById("canvas2");
+    var ctx = canvas.getContext("2d");
+    //Dibuja lineas horizontales
+    for(var i=0; i<300;){
+        ctx.moveTo(0,i);
+        ctx.lineTo(600,i);
+        ctx.strokeStyle = "#D8D8D8";
+        ctx.stroke();
+        i=i+20;
+    }
+    //Dibuja lineas verticales
+    for(var i=0; i<600;){
+        ctx.moveTo(i,0);
+        ctx.lineTo(i,600);
+        ctx.strokeStyle = "#D8D8D8";
+        ctx.stroke();
+        i=i+20;
+    }
+    //Eje X
+    ctx.beginPath();
+    ctx.moveTo(600,160);
+    ctx.lineTo(0,160);
+    ctx.strokeStyle = "#FA5858";
+    ctx.stroke();
+    //Eje Y
+    ctx.beginPath();
+    ctx.moveTo(300,0);
+    ctx.lineTo(300,300);
+    ctx.strokeStyle = "#FA5858";
+    ctx.stroke();
+}
+
+ */
