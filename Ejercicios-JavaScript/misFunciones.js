@@ -140,6 +140,64 @@ function dibujarCirCuad() {
 
 }
 
+let dibujarCuadriculado = () => {
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    ctx.font = "10pt Verdana";
+    ctx.fillStyle = "blue";
+
+    console.log("Se comenzara a dibujar!!!");
+    const xMax = canvas.width;
+    const yMax = canvas.height;
+
+    let paso = 20;
+    let ejeX = -15;
+    let ejeY = -25;
+    let despl = 2;
+
+    //Dibujar Líneas Horizontales
+
+    for (let i = 0; i < yMax; i += paso) {
+        ctx.beginPath();
+        ctx.moveTo(0, i);
+        ctx.lineTo(xMax, i);
+        ctx.strokeStyle = "#a19797"
+        ctx.stroke();
+        ctx.fillText(ejeX, xMax / 2 + despl, i + 4);
+        ejeX += 1;
+        ctx.closePath();
+    }
+
+    //Dibujar Líneas Verticales
+    for (let i = 0; i < xMax; i += paso) {
+        ctx.beginPath();
+        ctx.moveTo(i, 0);
+        ctx.lineTo(i, yMax);
+        ctx.strokeStyle = "#1b73f8"
+        ctx.fillText(ejeY, i, yMax / 2 - 6);
+        ejeY += 1;
+        ctx.stroke();
+        ctx.closePath();
+    }
+
+    //Eje X
+    ctx.beginPath();
+    ctx.moveTo(0, yMax / 2);
+    ctx.lineTo(xMax, yMax / 2);
+    ctx.strokeStyle = "#830303"
+    ctx.stroke();
+    ctx.closePath();
+
+    //Eje Y
+    ctx.beginPath();
+    ctx.moveTo(xMax / 2, 0);
+    ctx.lineTo(xMax / 2, yMax);
+    ctx.strokeStyle = "#830303"
+    ctx.stroke();
+    ctx.closePath();
+}
+
+/*
 function dibujarCuadriculado() {
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
@@ -181,4 +239,42 @@ function dibujarCuadriculado() {
     ctx.strokeStyle = "#0226ff";
     ctx.stroke();
     ctx.closePath();
+}
+
+
+*/
+function dibujarImagen(posX, posY) {
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    canvas.width = canvas.width();
+
+    var img = new Image();
+    img.src = "images/auto.png";
+
+    img.onload = function () {
+        ctx.drawImage(img, posX, posY);
+    }
+}
+
+x = 0;
+dx = 2;
+
+function animarAuto() {
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    cosole.log(posX, posY);
+    var img = new Image();
+    img.src = "images/auto.png";
+
+    canvas.width = canvas.width();
+
+    img.onload = function () {
+        ctx.drawImage(img, x, 100);
+    }
+    if (x > canvas.width) {
+        x = 0;
+    }
+    x += dx;
 }
